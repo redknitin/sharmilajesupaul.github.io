@@ -1,99 +1,75 @@
-div {
-  border-radius: 3px;
+* {
+  margin: 0 0 0 0;
 }
 
-.container {
+body {
   position: relative;
-  top: 60px;
-  left: 150px;
-  height: 600px;
-  width: 40%;
-  background: transparent;
+  background-color: white;
 }
 
 .header {
-/*  visibility: visible;*/
   position: absolute;
-  top: 0px;
-  left: 0px;
-  right: 0px;
-  height: 25%;
-  color: #DEEAE8;
-  padding-left: 30px;
-  text-align: left;
-  font-color: #A30000;
-  font-family: "Arial Black", serif;
-  border-top: 3px solid #236B5D;
-  background-color: #6FA298;
-}
-
-.posting-date {
-  position: absolute;
-  float: left;
-  top: 10px;
-  left: -100px;
-  width: 100px;
-  height: 60px;
-  background-color: #236B5D;
+  top: 0;
+  right: 0;
+  left: 0;
+  font-family: 'Arial Black', serif;
+  font-size: 25px;
+  bottom: 80%;
   color: white;
-  text-align: center;
-  padding-top: 10px;
-  border-left: 1px solid gray;
-}
-
-.content {
-  /*visibility: visible;*/
-  position: absolute;
-  top: 98px;
-  left: 0px;
-  right: 0px;
-  height: 75%;
-  padding: 20px 40px 20px 40px;
+  background: #236B5D;
+  padding: 0px 40px 30px 40px;
   text-align: left;
-  font-color: black;
-  font-family: "Arial", serif;
-  background-color: #FAFFFE;
+
 }
 
-.links {
-/*  visibility: visible;*/
+.nav {
   position: absolute;
-  right: 0px;
-  bottom: 31px;
-  left: 0px;
-  height: 5%;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-bottom: 10px;
-  font-size: small;
-  border-top: 1px solid #236B5D;
-  background-color: #DEEAE8;
-}
-
-#tag {
-  display: inline;
-  float: left;
-}
-
-#sharing {
-  display: inline;
   float: right;
-  letter-spacing: 20px;
-  padding: 0px 10px 20px 5px ;
+  top: 20%;
+  right: 0;
+  left: 85%;
+  bottom: 5%;
+  font-size: small;
+  padding: 30px 20px 10px 20px;
+  border-left: solid 2px gray;
+  background-color: white;
+}
+
+.post {
+  overflow: scroll;
+  overflow-x: hidden;
+  position: absolute;
+  float: left;
+  background-color: #FAFFFE;
+  top: 20%;
+  right: 15%;
+  bottom: 5%;
+  font-family: 'Arial', serif;
+  color:  #4C4C4C;
+  padding: 20px 200px 40px 200px;
+
+}
+
+.post h4 {
+  padding: 10px 20px 0px 0px;
+  margin-left: 0;
+  font-weight: bold;
+  font-size: 25px;
+  color:  #4C4C4C;
+  border-bottom: 3px solid #236B5D;
+}
+
+.post p {
+  padding-top: 10px;
 }
 
 .footer {
-/*  visibility: visible;*/
   position: absolute;
-  right: 0px;
-  bottom: 0px;
-  left: 0px;
-  height: 3%;
-  padding-bottom: 15px;
-  padding-left: 10px;
-  text-align: left;
-  font-style: italic;
-  font-size: small;
-  background-color: #C3FFF3;
-  border-bottom: 3px solid #236B5D;
+  clear: both;
+  top: 95%;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 5px 20px 5px 20px;
+  background-color: #DEEAE8;
 }
