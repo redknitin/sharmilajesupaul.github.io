@@ -19,7 +19,6 @@ body {
   background: #236B5D;
   padding: 0px 40px 30px 40px;
   text-align: left;
-
 }
 
 .nav {
@@ -35,6 +34,11 @@ body {
   background-color: white;
 }
 
+#my-name {
+  font-size: 20px;
+  font-family: 'Montserrat', sans-serif;
+}
+
 .post {
   overflow: scroll;
   overflow-x: hidden;
@@ -43,8 +47,9 @@ body {
   background-color: #FAFFFE;
   top: 20%;
   right: 15%;
+  font-size: 17px;
   bottom: 5%;
-  font-family: 'Arial', serif;
+  font-family: 'Montserrat', sans-serif;
   color:  #4C4C4C;
   padding: 20px 200px 40px 200px;
 
@@ -54,9 +59,10 @@ body {
   padding: 10px 20px 0px 0px;
   margin-left: 0;
   font-weight: bold;
-  font-size: 25px;
+  font-size: 30px;
   color:  #4C4C4C;
   border-bottom: 3px solid #236B5D;
+  font-family: 'Inconsolata', serif;
 }
 
 .post p {
