@@ -1,3 +1,11 @@
+@media (max-width: 500px){
+	header {
+		font-size: 100%;
+		min-width: 100%;
+	}
+}
+
+
 html, body {
 	margin: 0;
 	height: 100%;
@@ -44,13 +52,15 @@ header {
 	color: #FFF6C9;
 	padding-left: 10%;
 	padding-top: 20px;
-	font-size: 100%;
+	font-size: x-large;
 }
 
 header img {
 	float: right;
 	overflow: hidden;
 	padding-right: 10%;
+	margin-top: -5%;
+	padding-top: 0%;
 }
 
 
