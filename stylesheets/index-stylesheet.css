@@ -1,6 +1,6 @@
-@media (max-width: 500px){
+@media (max-width: 480px) {
 	header {
-		font-size: 100%;
+		font-size: 20px;
 		min-width: 100%;
 	}
 }
@@ -8,21 +8,25 @@
 
 html, body {
 	margin: 0;
+	font-family: 'Droid Sans', sans-serif;
 	height: 100%;
 	width: 100%;
 	min-width: 100%;
-	background: #FFE7EE;
+	background: #FFFFFF;
 }
 
 nav {
 	height: 10%;
+	width: 100%;
+	min-height: 60px;
 	margin-bottom: 6%;
-	background: #C9D787;
+	background: #474741;
 	color: black;
 }
 
 nav a {
 	text-decoration: none;
+	color: white;
 }
 
 
@@ -44,16 +48,18 @@ nav a {
 
 
 header {
-	height: 25%;
 	margin-top: -6%;
 	margin-bottom: 0;
+	min-width: 100%;	
 	white-space: nowrap;
 	background: #FFFFFF;
-	color: #7D8A2E;
-	padding-left: 10%;
-	padding-top: 20px;
-	border-bottom: 3px solid #FFC0A9;
-	font-size: x-large;
+	color: #063979;
+	padding-left: 5%;
+	overflow: visible;
+	padding-top: 1%;
+	font-weight: bold;
+	border-bottom: 5px solid #020202;
+	font-size: 35px;
 }
 
 header img {
@@ -69,7 +75,7 @@ header img {
 	float: right;
 	clear: both;
 	height: 60%;
-	padding-right: 11%;	
+	padding-right: 8%;	
 	padding-top: 5%;
 	padding-bottom: 5%;
 }
@@ -83,10 +89,14 @@ header img {
 
 #content {
 	float: left;
-	width: 40%;
+	width: 30%;
 	height: 60%;
 	padding-bottom: 10%;
 	padding-left: 10%;
+}
+
+#content h3 {
+	font-size: 25px;
 }
 
 #content ul {
@@ -98,26 +108,34 @@ header img {
 	min-width: 100%;
 	height: 30%;
 	margin: 5%;
-	border: 3px solid #499E8D;
+	border: 3px solid #3399CC;
 	border-radius: 10%;
 	font-size: x-large;
 	text-align: center;
 	padding: 10% 5% 10% 5%;
-	background-color: #C8E8C7;
+	background-color: #B4DCED;
 }
 
 #content a {
 	text-decoration: none;
+	color: black;
 }
 
+#content a:visited {
+	color: #2B82AD;
+
+}
 
 
 footer {
 	clear: both;
 	bottom: 0;
-	height: 10%;
+	min-height: 25px;
 	text-align: center;
-	background-color: #7D8A2E;
+	color: white;
+	padding-top: 2%;
+	padding-bottom: 2%;
+	background-color: #474741;
 }
 
 
