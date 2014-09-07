@@ -1,98 +1,7 @@
-/* You'll want to make the site responsive and nice looking here. Have fun!*/
-@media (max-width: 480px) {
-
-  #side-a {
-    min-width: 100%;
-  }
- 
- #side-a li{
-    display: inline;
-    text-align: center;
-    font-size: 20px;
-    padding-top: 20px;
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-
-  #content {
-  margin-left: 16%;
-  margin-right: 16%;
-  width: 68%;
-  }
-}
-
-#wrapper {
-  text-align: left;
-  margin: 0px auto;
-  padding: 0px;
-  border:0;
-  width: 100%;
-  max-width: 100%;
-  background: url("http://cdn.elegantthemes.com/blog/wp-content/uploads/2013/09/bg-6-full.jpg") repeat;
-  color:black;
-  font-size: 2em;
-}
-
-img { 
-  max-width: 100%; 
-} 
-
-#side-a ul{
-  list-style-type:none;
-}
-
-a {
-  color:black;
-}
-
-#header {
-  margin: 0 0 15px 0;
-  background: black;
-  color: white;
-}
-
-#side-a {
-  float: left;
-  width: 15.625%;
-}
-
-#side-a li{
-  padding-top: 20px;
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
-/*#side-b {
-  float: right;
-
-  width: 150px;
-  width: 15.625%;
-}*/
-
-#content {
-  float: left;
-  width: 68%;
-}
-
-.reflection {
-  margin-top: 2%;
-  margin-bottom: 2%;
-  text-align: center;
-  font-size: 18px;
-  border: 4px dotted #F092A0;
-  background-color: #F5F0E8;
-  margin-left: 15%;
-  margin-right: 21%;
-  width: 68%;
-}
-
-#footer {
-  clear: both;
-  background: #A2A2A2;
-}<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="stylesheet.css">
+  <link rel="stylesheet" href="../stylesheets/stylesheet.css">
   <title>Responsive Design and Fluid Layouts</title>
 </head>
 <body>
@@ -136,6 +45,10 @@ a {
     <p>I am really glad that this was a pairing challenge because it allowed my pair and I to switch off between each requirement seamlessly. I think one of the trickiest parts of this assignment was deciding how to facilitate changes made to the mobile version of the app using a media query. Adding the media query to our CSS was pretty simple, but deciding what changes need to be inside the media query was trial and error at first.</p> 
     <p>In our first iteration of CSS we added our "min-width: 100%;" code to the nav bar container selector (#side-a) outside of our media query. This kept the container at same size even when resizing to a screen size of below 480px (or max-width conditional size in the media query). Since the container stayed at its original 100% size even while resizing, there was no room for an inline list display. Furthermore, this caused the text to be cut off by the pictures and text in the 'content' container. Fixing this was tricky, but once we found the solution, it was definitely an 'aha' moment for me. The min-width condition needed to be placed in the media query, so that when the browser is resized it occupies 100% of the screen width while displaying the list inline.</p>  
     <p>Overall this challenge helped me understand the visual transition from a larger screen to a mobile screen. I have a new found respect for fluidity in websites, especially ones that retain shape in all points of resizing. You will notice that on the way to our mobile size, the website doesn't retain its shape as well as it should. I guess this would be the next step in improving the design.</p>
+
+    <br>
+  <p>9/3/2014</p>
+
   </div>
 
 </div>
