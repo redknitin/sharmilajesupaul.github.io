@@ -1,0 +1,106 @@
+<html>
+  <head>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
+    <link type="text/css" rel="stylesheet" href="../stylesheets/blog-stylesheet.css"/>
+    <title>DBC Blog Post</title>
+  </head>
+
+
+  <body>
+
+    <div class="header">
+      <h1>Lines of Code</h1>
+      <h3> I can't think of a clever title at this moment</h3>
+    </div>
+
+    <span>
+
+      <div class = "post">
+
+        <h4>CSS: The Box Model</h4>
+
+        <p> Think about the screens you have come across daily. Most of them are probably rectangular. When you open a website in a browser window most of them tend to divide their content in rectangles, however there are some exceptions. In daily life, you might come across a round LCD screen on the face of a watch or maybe a speedometer in your car (they seem to add a ‘futuristic’ feel in vehicles, I mean, check out the inside of the Iron man Helmet). </p>
+        <br>
+
+          <img src="../imgs/ironman-helmet.jpg" width:"40%" height:"30%"/>
+
+  
+        <p>Like I mentioned earlier, on the web, most content is divided into rectangular sections. Circles within a rectangular monitor are usually style choices over real usability and performance enhancers. Most websites are also made of two types of languages that make up the content and design of the page- HTML and CSS. The skeleton of a webpage is HTML. It is the bones, the structure, that also holds website content. CSS is the skin and makeup. Most screens are rectangular, most browsers are rectangular, hence CSS divisions are made using a Box Model.  
+        </p>
+
+        <br>
+        <img src="../imgs/boxmodel.png" />
+        <p><center><em>The box model representing margin, padding, and border.</em></center></p>
+
+        <p> What is the box model? Look at the image below. It represents the box model which is an arrangement of rectangular boxes that help divide content on a webpage. Each box has four sides effectively named top, right, bottom, and left, in that order. Think clockwise. The space inside the box is divided up in to a cascading group of boxes that are placed inside each other, these are: margin, border, and padding. These three divisions are vital to placement of objects in our browser window. </p>
+
+        <p> The margin is outer most box, it is unique because it doest resize the the box itself, but rather, it determines how other boxes interact with this division of content. Let me show you what I mean. The three boxes below are styled using CSS and they are given a margin of “0 auto”.</p>
+
+        <br>
+        <img src="../imgs/boxes.png" />
+
+        <p> Heres their HTML Code: </p>
+        <br>
+        <img src="../imgs/boxes-html.png" />
+        <p>Each box is divided up in a <div> tag and given appropriate ids that match their content text. </p>
+
+        <p>Now here’s the CSS used to style these boxes: </p>
+        <br>
+        <img src="../imgs/boxes-css.png" />
+        <p>You will notice that there is a pattern being followed in our CSS. Each box in the CSS above (‘#box1’, ‘#box2’, and ‘#box3’) is given a margin of 0 auto, which essentially tells the computer to automatically set all margins to 0, effectively making the margin disappear. This is why there is no space between our boxes. Next to follow in our style pattern is padding. Padding is the space between our border and our content, (in this example our text inside the box is our content). Our box padding is set to 20px; this sets the space between all sides of our content to 20px wide. But our text is left justified, which creates the space on our right. Lastly our border. The border tag takes 3 very different arguments, the first is ‘2px’ this defines our border width. Next our border is solid, you can choose others such as dashed, or dotted, or even custom border images.. Lastly our border color is black.</p>
+
+        <p>Now lets look at an example where margins start to interrupt each other to cause chaos. The boxes in this image seem to be a little differently.</p>
+        <br>
+        <img src="../imgs/m-boxes.png" />
+        <p>Lets check out their CSS (the HTML has not been altered in any way): </p>
+        <br>
+        <img src="../imgs/m-boxes-css.png" />
+
+        <p>You can see that I’ve changed a lot of margin values up there. For our first box, #box1, the top margin is a negative number. This means that the margin space above our content has effectively been reduced by 10px, this moves the box above my browser threshold we lose our top border entirely. If you look closely you will see something different about the space below our text as well. Even though our margin is 30px, the blue box is very clearly invading the red box’s space. Look at the style of #box2 - margin-top is set to -40px. This means that it has pushed our box above all of the space of the #box1 margin and into 10px of #box1. Confused? Don’t be, thick of it this way: Margin bottom under #box1 is telling the other content to keep away by 20px, however margin-top under #box2 says that it will effective subtract the space above it by -40px. So whats 30px - 40px = -10px, so the margin has placed box2 over box1 by 10px. And box3 is all by itself because it has a space of 60px between it and box2, and 30px below it. So there you have it, margin controls how the boxes interact with each other.</p>
+
+        <p> If you’ve stuck with me this far there’s good news: once you’ve got margin down, padding and border are easy to understand. Heres the third example:</p>
+        <br>
+        <img src="../imgs/pd-boxes.png" />
+
+        <p>Here’s the CSS for the three boxes above:</p>
+        <br>
+        <img src="../imgs/pb-boxes-css.png" />
+
+        <p>You’ll notice a couple peculiar things, like the border on box2. Look under #box2, I’ve doubled the border width to 4px, made it dotted, and changed the color top pink. The ‘border’ is the boundary where our padding ends and our margin begins. Look under #box3, notice the negative number assigned to ‘padding-top’. Compare this to the second example where our negative margin pushed our boxes to layer over each other. Even though my padding is negative, the padding is only the space between my border and content, so my content will reach the edge of the border and then stop because it cannot cross into the margin area. Our second box padding is 20px on all sides. Another way to write this would be ‘padding: 20px 20px 20px 20px;’ where the numbers represent top, right, down, and left respectively (remember - clockwise).</p>
+
+        <p>At this point you are probably thinking to yourself, if margin, padding, and border don’t change the size of the box, what does? In CSS there are a couple different ways to represent box size, they can also be determined relative to our browser size. The default size of boxes, that have no size declaration is set to fill our entire browser window while accommodating each margin size. One way to set box size is by setting box ‘height’ and ‘width’. Heres an illustration of height and width found on CSS-tricks: </p>
+        <br>
+        <img src="../imgs/heightwidth.png" />
+
+        <p>Notice where our padding, border, and heading are located. The height and width essentially defines the space around our content. Okay, here’s the last example set of primary colored boxes: </p>
+        <br>
+        <img src="../imgs/hw-boxes.png" />
+        <p>And here’s our CSS: </p>
+        <img src="../imgs/hw-boxes-css.png" />
+
+        <p>Lets examine the CSS of these boxes here, they all have various heights and widths. #box2 has the same height and width, so its a square. Notice how our margin space is not disturbed by our resizing. But what is distorted, very visually in #box3 is our padding size. Notice how the padding around the text of the yellow box is not even, this is because our new box size is effectively cutting our padding off and in this case, the resizing was shaved off the right side of our box, making the padding uneven. </p>
+
+        <p>There are many different ways to define content size and position on a browser window, spacing is always defined by our box model consisting of padding, border, and margin. The thing to keep in mind is, each box can be styled differently and they all have a certain amount of padding, border, and margin. Go forth and experiment!</p>
+
+        <p>Here are some other helpful resources:</p>
+        <ul>
+          <li><a href="http://www.w3schools.com/css/css_boxmodel.asp">W3Schools CSS Box Model</a></li>
+
+          <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/box_model"> Mozilla Developer Network: CSS Box Model</a></li>
+
+          <li><a href="http://css-tricks.com/the-css-box-model/">CSS Tricks: The CSS Box Model</a></li>
+
+          <li><a href="http://learnlayout.com/margin-auto.html">Learn Layout: Margin Auto</a></li>
+
+          <li><a href="http://www.templatemonster.com/help/css-understanding-border-margin-and-padding-properties.html">Template Monster: Understanding Border Margin and Padding Properties</a></li>
+        </ul>
+
+        <br>
+        <p><em>By: Sharmila Jesupaul on Sunday, September 6th 2014</em></p>
+      </div>
+    </span>
+
+  </body>
+
+</html>
