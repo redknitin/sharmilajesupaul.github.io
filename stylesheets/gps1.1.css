@@ -1,0 +1,22 @@
+
+nav {
+	float: left;
+	width: 30%;
+	height: 90%;
+	text-align: center;
+}
+
+nav ul {
+	list-style:none;
+	padding-left: 0px;
+}
+
+main {
+	float:right;
+	width:70%;
+}
+
+footer {
+	clear: both;
+	text-align: center;        
+}
