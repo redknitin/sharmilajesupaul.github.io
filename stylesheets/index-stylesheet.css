@@ -89,7 +89,7 @@ header img {
 
 #content {
 	float: left;
-	width: 30%;
+	width: 60%;
 	height: 60%;
 	padding-bottom: 10%;
 	padding-left: 10%;
@@ -104,16 +104,14 @@ header img {
 }
 
 #content li {
-	display: inline-block;
-	min-width: 100%;
-	height: 30%;
-	margin: 5%;
-	border: 3px solid #3399CC;
-	border-radius: 10%;
-	font-size: x-large;
-	text-align: center;
-	padding: 10% 5% 10% 5%;
-	background-color: #B4DCED;
+/* display: inline-block; */
+margin: 5%;
+/* width: 20%; */
+border-radius: 10%;
+font-size: 120%;
+/* text-align: center; */
+/* padding: 10% 5% 10% 5%; */
+/* background-color: #B4DCED; */
 }
 
 #content a {
