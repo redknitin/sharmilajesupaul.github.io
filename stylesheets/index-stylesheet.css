@@ -97,6 +97,7 @@ header img {
 
 #content h3 {
 	font-size: 25px;
+	border-bottom: 2px solid #E6E6E6;
 }
 
 #content ul {
@@ -115,7 +116,6 @@ font-size: 120%;
 }
 
 #content a {
-	text-decoration: none;
 	color: black;
 }
 
