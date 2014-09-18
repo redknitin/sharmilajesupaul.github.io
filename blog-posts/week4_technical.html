@@ -38,14 +38,14 @@
           An array is an indexed collection of objects. They are the oldest structure in programming languages to store a data collection in a naturally sorted way. Most other structures (stacks, queues, hashes, etc) are some forms and diversions of arrays. Arrays are also my favorite data structure to work with, in case you couldn’t tell already.  
         </p>
         <p>
-          You can create an array in Ruby using the box bracket notation. So an empty array would be declared like: array = [] The index of an array starts at 0 so the first object in an array named can be targeted by using the box notation: array[0]. Generally, square braces are used to reference elements at a certain index. Ruby also has a couple methods that are used to return common elements of an array such as #first and #last which returns the first and last element of the array respectively.
+          You can create an array in Ruby using the square bracket notation. So an empty array would be declared like: array = [] The index of an array starts at 0 so the first object in an array can be targeted by using the square bracket notation: array[0]. Generally, square brackets are used to reference elements at a certain index. Ruby also has a couple methods that are used to return common elements of an array such as #first and #last which returns the first and last element of the array respectively.
         </p>
         <center><img src="../imgs/wk4techex1.png" />
         <p>outputs: </p>
         <img src="../imgs/wk4techoutput1.png"></center>
         <h4>Okay, but what good is an ordered collection of data?</h4>
         <p>
-          In most languages, arrays only support one kind of data-type. This means that a 1d array cannot contain a mixture of strings, integers, booleans, etc. However, since everything is an object in ruby, we can put whatever data-type we like in our arrays. I can have an array of [“cats”, 5, true]. I’m not sure what I would use it for though. 
+          In most languages, arrays only support one data-type. This means that a 1D array cannot contain a mixture of strings, integers, booleans, etc. However, since everything is an object in Ruby, we can put whatever data-type we like in our arrays. I can have an array of [“cats”, 5, true]. I’m not sure what I would use it for though. 
         </p>
         <p>
           Arrays can be used to represent a whole slew of awesome things. Suppose you have a list of students in your class and you need to create a random groups of 4 for a class activity. You can create an array that holds all the names of your students, then shuffle the array, and split it up by 4.
@@ -55,17 +55,17 @@
         <img src="../imgs/wk4techoutput2.png"></center>
         <p>(try running that code several times and you should get different outputs each time)</p>
         <p>
-          That second line might seem a bit confusing. But the gist of it is that we shuffle our array first using “.shuffle”. Then we slice our array at every 4th element using “.each_slice” and then use “.to_a” to return our sliced array. But what if we had a class of 9 students? We would have to adjust our algorithm in a way that makes sure that every group has 3 students (maybe use each_slice(3) instead?). There are several ways to solve these problems. 
+          That second line might seem a bit confusing. But the gist of it is that we shuffle our array first using “.shuffle”. Then we slice our array at every 4th element using “.each_slice(4)” and then use “.to_a” to return our sliced array. But what if we had a class of 9 students? We would have to adjust our algorithm in a way that makes sure that every group has at least 3 students (maybe use each_slice(3) instead?). There are several ways to solve these problems. 
         </p>
         <p>
-          You might have noticed something interesting about the output of our class groups. The output is in the form of [ [1,2,3,4] , [1,2,3,4] ]. This is a 2d array and it brings us to my favorite use of arrays thus far: using an array is to represent a 2d map. I am quite partial to video game maps but anything with an x and y coordinate can be represented by a 2d array. 
+          You might have noticed something interesting about the output of our class groups. The output is in the form of [ [1,2,3,4] , [1,2,3,4] ]. This is a 2D array and it brings us to my favorite use of arrays thus far: using an array is to represent a 2D map. I am quite partial to video game maps but anything with an x and y coordinate can be represented by a 2D array. 
         </p>
         <p>
-          Here is a 2d array used to represent a video game map in Chris Pine’s ‘Learn to Program’.
+          Here is a 2D array used to represent a video game map in Chris Pine’s ‘Learn to Program’.
         </p>
         <center><img src="../imgs/chrispinemap.png" /></center>
         <p>
-          In this particular map, Pine uses 'M' to mark bodies of land and 'o' to represent water. The x coordinates of the map are determined by the index of the nested array and the y coordinates are determined by the index of the outer array. The fun thing about these arrays is the fact that the content can be automatically generated by applying simple algorithms. But the magic and wonder doesn’t stop there. Go forth and create a 3d array or any ordered collection of objects, the potential of arrays is limitless! 
+          In this particular map, Pine uses 'M' to mark bodies of land and 'o' to represent water. The x coordinates of the map are determined by the index of the nested array and the y coordinates are determined by the index of the outer array. The fun thing about these arrays is the fact that the content can be automatically generated by applying simple algorithms. But the magic and wonder doesn’t stop there. Go forth and create a 3D array or any ordered collection of objects, the potential of arrays is limitless! 
         </p>        
         <h4>Resources:</h4>
         <ol style="
@@ -75,7 +75,7 @@
           <li>Treehoues Blog: <a href="http://blog.teamtreehouse.com/ruby-arrays">The Basics of Ruby Arrays</a></li>
           <li>TutorialsPoint: <a href="http://www.tutorialspoint.com/ruby/ruby_arrays.htm">Ruby Arrays</a></li>
           <li>Ruby Docs: <a href="http://www.ruby-doc.org/core-2.1.2/Array.html">Array Class</a></li>
-          <li>Willamette University: <a href="http://www.willamette.edu/~gorr/classes/cs231/lectures/chapter9/arrays2d.htm">2d Arrays</a></li>
+          <li>Willamette University: <a href="http://www.willamette.edu/~gorr/classes/cs231/lectures/chapter9/arrays2d.htm">2D Arrays</a></li>
         </ol>
         <br>
         <p><em>By: Sharmila Jesupaul on September 17, 2014</em></p>
