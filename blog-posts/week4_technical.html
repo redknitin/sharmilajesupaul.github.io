@@ -40,9 +40,23 @@
         <p>
           You can create an array in Ruby using the square bracket notation. So an empty array would be declared like: array = [] The index of an array starts at 0 so the first object in an array can be targeted by using the square bracket notation: array[0]. Generally, square brackets are used to reference elements at a certain index. Ruby also has a couple methods that are used to return common elements of an array such as #first and #last which returns the first and last element of the array respectively.
         </p>
+        <pre><code>
+        arr = ["A","B","C","D"]
+        puts 'index 1 of the array' + arr[1]  #remember, the index starts at 0
+        puts '#first' + arr.first
+        puts '#last' + arr.last
+        </code></pre>
+        
+        <pre><code>
+        <p>outputs:</p>  
+        index 1 of  the array: B 
+        #first: A 
+        #last: D
+        </code></pre>
+        <!-- 
         <center><img src="../imgs/wk4techex1.png" />
         <p>outputs: </p>
-        <img src="../imgs/wk4techoutput1.png"></center>
+        <img src="../imgs/wk4techoutput1.png"></center>--> 
         <h4>Okay, but what good is an ordered collection of data?</h4>
         <p>
           In most languages, arrays only support one data-type. This means that a 1D array cannot contain a mixture of strings, integers, booleans, etc. However, since everything is an object in Ruby, we can put whatever data-type we like in our arrays. I can have an array of [“cats”, 5, true]. I’m not sure what I would use it for though. 
@@ -50,9 +64,19 @@
         <p>
           Arrays can be used to represent a whole slew of awesome things. Suppose you have a list of students in your class and you need to create a random groups of 4 for a class activity. You can create an array that holds all the names of your students, then shuffle the array, and split it up by 4.
         </p>
-        <center><img src="../imgs/wk4techex2.png" />
+
+        <pre><code>
+        students = ["Sharmila", "Matt", "Sara", "Savannah", "Ale", "Derrek", "Nate", "Brian"]
+        p students.shuffle.each_slice(4).to_a
+        </code></pre>
+        <pre><code>
+        <p>outputs:</p>
+        [["Derrek", "Sara", "Nate", "Matt"], ["Savannah", "Sharmila", "Ale", "Brian"]]
+        </code></pre>
+
+       <!-- <center><img src="../imgs/wk4techex2.png" />
         <p>outputs: </p>
-        <img src="../imgs/wk4techoutput2.png"></center>
+        <img src="../imgs/wk4techoutput2.png"></center>  -->
         <p>(try running that code several times and you should get different outputs each time)</p>
         <p>
           That second line might seem a bit confusing. But the gist of it is that we shuffle our array first using “.shuffle”. Then we slice our array at every 4th element using “.each_slice(4)” and then use “.to_a” to return our sliced array. But what if we had a class of 9 students? We would have to adjust our algorithm in a way that makes sure that every group has at least 3 students (maybe use each_slice(3) instead?). There are several ways to solve these problems. 
