@@ -60,6 +60,7 @@ a:visited {
 	left: 0;
 	right: 0;
 	background-color: rgba(211, 223, 224, 0.7);
+	z-index: 1;
 }
 
 .nav ul {
