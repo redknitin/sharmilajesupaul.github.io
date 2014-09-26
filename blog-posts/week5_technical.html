@@ -1,50 +1,236 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sharmila's Dev Bootcamp Website</title>
+  <link href='http://fonts.googleapis.com/css?family=Libre+Baskerville:700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Josefin+Slab:700|Roboto:300' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="../css/custom.css" >
+  <!-- Bootstrap -->
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
 
-<html>
-  <head>
-    <link rel="stylesheet" type="text/css" href="../stylesheets/index-stylesheet.css">
-    <title>Shar at Dev Bootcamp</title>
-  </head>
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+      <![endif]-->
+    </head>
+    <body>
+      <div class="wrapper">
 
-  <body>
+        <div class="nav">
+          <ul>
+            <div id="left">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="blog-index.html">Blog Index</a></li>
+            </div>
+            <div  id="right">
+              <li><a href="gps.html">GPS</a></li>
+              <li><a href="contact-me.html">Contact Me</a></li>
+            </div>
+          </ul> 
+        </div>
+
+
+        <div class = "jumbotron"> 
+          <h1 style = "color: #616161;
+          padding-right: 10%;">Mostly Meta Learning</h1>
+          <h3 style = "color: #616161;
+          padding-right: 10%;">My journey through Dev Bootcamp and beyond.</h3>
+        </div>
+
+        <div class="container">
+          <!-- <div class="col-md-5"><img src="llama.jpg" width="350px"   height="400px" /></div> -->
+
+          <div class="col-md-12">  
+            <h3>Classes in Ruby: The Tree Class </h3>
+            <p>
+              Classes are objects in Ruby, this means that every class is a subset of the class Class (all classes are in encompassing class called Class). Anything you can do with an object, you can do with a class. We can create instances of any class, including built-in classes such as (String, Array, Math, etc). We can even create instance variables in our class. Since Ruby follows an object oriented model, each method within a class usually serves a singular purpose. Lets build a class together: 
+            </p>
+            <pre><xml>
+              class Tree
+
+              def initialize (type, produce)
+              @type = type
+              @produce = produce
+              @dead = false
+              end
+              end 
+            </xml></pre>
+            <p>
+              Seen above is a class Tree with an initialize method that takes two arguments: type and produce. This method just declares several instance variables that can be used through out our Tree class. Our tree is not dead yet since we just created it, so @dead is set to false to begin with. The instance variables @type and @produce, are assigned to the arguments ‘type’ and ‘produce’. So we can initialize this class with any type of tree and decide what it’s produce is called. 
+            </p>
+            <pre><xml>
+              apple_tree = Tree.new(‘apple’, ‘apple’)
+              evil_tree = Tree.new(‘evil’, ‘blood goblin’)
+            </xml></pre>      
+            <p>
+              Our apple tree is produces apples and our evil tree produces blood goblins. Now we can call any of the methods in our Tree class using the variables ‘apple_tree’ or ‘evil_tree’. But our class doesn’t have any methods other than our initialize method. Lets add some more functionality: 
+            </p>
+            <pre><xml>
+              class Tree
+
+                def initialize (type, produce)
+                  @type = type
+                  @produce = produce
+                  @dead = false
+                  @produce_left = 0
+                  @produce_picked = 0
+                end
   
-    <nav>
-      <a href="../index.html" class="leftnav">Home </a>
-<!--       <a href="../about-me.html" class="leftnav">About Me </a> -->
-      <a href="../blog-index.html" class="rightnav">Blog Index </a>
-      <!-- <a href="../projects.html" class="rightnav">Projects </a> -->
-    </nav>
+                # outputs the amount of produce left 
+                def number_of_produce
+                  puts "There are #{@produce_left} #{@produce}s left on your #{@type} tree."
+                end
   
-    <header>
-      <h1> Sharmila at Dev Bootcamp </h1>
-      <img src="../imgs/profilecircle.png" /> 
-    </header>
-    
-    <main>
-      <div id="icons">    
-       <a href="http://www.twitter.com/ChaosCatter"><img src="../imgs/Twitter-icon.png"> </a>
-        <a href="http://www.facebook.com/mysticmania"><img src="../imgs/Facebook-icon.png"></a>
-        <a href="https://www.linkedin.com/pub/sharmila-jesupaul/75/22/9b2"><img src="../imgs/Linkedin-icon.png"></a>
-        <a href="http://sharmilasaurus.tumblr.com"><img src="../imgs/Tumblr-icon.png"> 
-      </div></a>
-  
-      <div id="content">
-        
-        <p><xmp>
-          if @age == 20 || @dead == true
-            puts "Your tree is dead :("
+              
+                
+                def pick
+                  if @produce_left > 0 # if there are more than one items,
+                    @produce_picked += 1 # add 1 to produce_picked
+                    @produce_left -= 1 # subtract 1 from number of 
+                    puts "You have picked #{@produce_picked} #{@produce}(s)."
+                  else
+                    puts "There are no #{@produce}s to pick!"
+                  end
+                end
+
+              end
+            </xml></pre>
+          <p>
+            Now we can do a couple more things with our tree. Namely the ability to pick different items from our tree and increment the amount we have picked while decrementing the amount left on the tree. In our method #number_of_produce we can output the amount of items on your tree. And in the method #pick we can see some logic. If there is more than 0 produce left on our tree, the produce_picked increments by 1 and produce_left decrements by one. We output the amount of of produce we have picked. If there are no items on the tree, we output that there is no produce to pick. Lets call our brand new methods on our trees: 
+          </p>
+          <pre><xml>
+            apple_tree = Tree.new(‘apple’, ‘apple’)
+            apple_tree.pick # => There are no apples to pick!
+            apple_tree.number_of_produce # => There are 0 apples left on your tree.
+            puts 
+            evil_tree = Tree.new(‘evil’, ‘blood goblin’)
+            evil_tree.pick # => There are no blood goblins to pick!
+            evil_tree.number_of_produce # => There are 0 blood goblins left on your tree.
+          <xml></pre>
+          <p>
+            You might have noticed something weird about our outputs. We don’t have any produce to pick! Oh no! This is because our @produce_left instance variable is never incremented at all. So we start with 0 and there are 0 items on our tree to pick. What we need now, is a way to account for time. If we age our tree and increase the number of items it produces we might be able to make our pick method come to life: 
+          </p>
+          <pre><xml>
+          class Tree
+          
+            def initialize (type, produce)
+              @type = type
+              @produce = produce
+              @age = 0
+              @produce_left = 0
+              @dead = false
+              @produce_picked = 0
+              @drought = false
+            end
+          
+            # advances time forward by one year
+            def one_year_passes
+              passage_of_time
+              puts "Your #{@type} tree is: #{@age} years old." if !@dead
+            end
+          
+            # outputs the number of oranges left 
+            def number_of_produce
+              puts "There are #{@produce_left} #{@produce}s left on your #{@type} tree."
+            end
+          
+            # if there are more than one oranges,
+            # add 1 to orange_picked and subtract 1 from number of 
+            # oranges. 
+            # outputs the number of oranges you have picked 
+            def pick
+              if @produce_left > 0
+                @produce_picked += 1
+                @produce_left -= 1
+                puts "You have picked #{@produce_picked} #{@produce}(s)."
+              else
+                puts "There are no #{@produce}s to pick!"
+              end
+            end
+                     
+
+            private
+
+            # this method handles all of the logic that takes place when time
+            # advances forward:
+            # we check to see if the tree is dead 
+            # and then increase age, and number of produce, accordingly. 
+            def passage_of_time
+            
+              # if the tree is 20 years old, or @dead is true outputs that your tree is dead. 
+              puts "Your tree is dead :(" if @age == 20 || @dead == true
+             
+              # increment age by 1 if the tree is not dead
+              @age += 1 if !@dead 
+              
+              # when age is between the criteria below, produce is incremented or set to 0 
+              case @age 
+              when 3..5 then @produce_left = 5
+              when 6..12 then @produce_left = 9
+              when 13..20 then @produce_left = 15
+              else @produce_left = 0
+              end
+            end
           end
-        </xmp></p>
-   
+          </xml></pre>
 
-        <br>
-        <p><em>By: Sharmila Jesupaul on September 18, 2014</em></p>
+          <p>
+            Theres a lot going on in our Tree class now. Look right above the passage_of_time method, theres a line there that says ‘private’. <xml>private</xml> is a method in the class Class in Ruby. Everything under #private can not be accessed outside the class. If we try to access passage_of_time outside of our Tree class, the program will throw an error. There is also a lot going on in passage_of_time, we check if our tree is dead, we increment by age by 1 if its not dead, and we decide how many items are in the tree depending on its age. This method is set to private because we only want to call it inside our class every time we advance time forward. Right under our initialize method, I’ve added a method that advances time forward by one year, it’s aptly named <xml> one_year_passes </xml>. We call <xml>passage_of_time</xml> in one_year_passes and then output the age of our tree. Now, since we’ve accounted for time, and we are adding items to our tree depending on age (in passage_of_time method), we can run our method with very real effects. Lets call our brand new methods, and see our Tree class in action. 
+          </p>
+          <pre><xml>
+          apple_tree = Tree.new('apple', 'apple')
+          apple_tree.one_year_passes # => Your apple tree is: 1 years old.
+          apple_tree.number_of_produce # => There are 0 apples left on your apple tree.
+          apple_tree.one_year_passes # => Your apple tree is: 2 years old.
+          apple_tree.one_year_passes # => Your apple tree is: 3 years old.
+          apple_tree.number_of_produce # => There are 5 apples left on your apple tree.
+          apple_tree.pick # => You have picked 1 apple(s).
+          apple_tree.number_of_produce # => There are 4 apples left on your apple tree.
+          puts # => empty line 
+          evil_tree = Tree.new('evil', 'blood_goblin')
+          evil_tree.one_year_passes # => Your evil tree is: 1 years old.
+          evil_tree.number_of_produce # => There are 0 blood_goblins left on your evil tree.
+          evil_tree.one_year_passes # => Your evil tree is: 2 years old.
+          evil_tree.one_year_passes # => Your evil tree is: 3 years old.
+          evil_tree.number_of_produce # => There are 5 blood_goblins left on your evil tree.
+          evil_tree.pick # => You have picked 1 blood_goblin(s).
+          evil_tree.number_of_produce # => There are 4 blood_goblins left on your evil tree.
+          </xml></pre>  
+
+          <p>
+            Now we can pick things from our tree and see how many items we have picked. We can advance time forward, and our methods are all running perfectly. Success!
+          </p>
+          <p>
+            There are so many more things we can do with our Tree class. I have added a couple things to my own class, including a height method that outputs the height of the tree. And a drought methods that starts a drought and determines whether the tree will survive during the drought. Check out the entire class <a href="https://github.com/sharmilajesupaul/sharmilajesupaul.github.io/blob/master/misc./tree.rb">HERE</a>. Feel free to grab that code and manipulate it however you like. 
+          </p>
+          <p>My tree class was inspired by Chris Pine’s <a href="https://pine.fm/LearnToProgram/chap_09.html">Learn to Program</a>.</p>
+          <p>Here are some other helpful resources on classes in Ruby: </p>
+          <ol>
+            <li>Tuts Plus: <a href="http://code.tutsplus.com/tutorials/ruby-for-newbies-working-with-classes--net-15938">Working with Classes in Ruby</a></li>
+            <li>Rubylearning.com: <a href="http://rubylearning.com/satishtalim/writing_our_own_class_in_ruby.html">Writing Our Own Class</a></li>
+            <li>Ruby Docs, <a href="http://ruby-doc.org/core-1.9.3/Class.html">Class: Class</a></li>
+            <li>StackOverflow: <a href="http://stackoverflow.com/questions/4967556/ruby-craziness-class-vs-object">Class vs Object</a></li>
+          </ol>
+          <p></p>
+          <br>
+          <p><em>By Sharmila Jesupaul on September 26, 2014</em></p>
+       </div>
       </div>
+      <div class="footer"> 
+        <p><center>Copyright © Sharmila Jesupaul 2014</center></p>
+      </div>
+    </div>
 
-    </main>
-  
-    <footer>
-      <p>Copyright © Sharmila Jesupaul 2014</p>
-    </footer>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+
   </body>
-</html>
+  </html>
