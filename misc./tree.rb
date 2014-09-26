@@ -1,7 +1,6 @@
 # This is a tree class inspired by Chris Pine's Orange Tree. The tree has the ability
-# to increase in age and height. It can also produce any type of product you intialize 
-# it with. The tree can die naturally at age 20 or in a drought if it is still producing
-# product. 
+# to increase in age and height. It can be initialized with type of tree and kind of produce. 
+# The tree can die naturally at age 20 or in a drought if it is still producing product. 
 
 class Tree
   # declares all the instance variables that occur 
