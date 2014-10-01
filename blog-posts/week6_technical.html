@@ -148,7 +148,7 @@
             
             p lam_square.call(10,20,30,40) # => error: wrong number of arguments (4 for 1)
             p proc_square.call(10,20,30,40) # => prints '100'
-            </pre></code>
+            </code></pre>
             <p>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In the example above, I have a created a lambda and a proc that store the same block of code. They take a value and return its square.  When we call our lambda on the number 10, it returns the square of 10, which is 100. Same goes for our proc. But look what happens when we give our lambda more than one argument. Since it only expects one argument ‘x’ it throws an error that explicitly says “wrong number of arguments (4 for 1)”. But proc_square just prints 100 and ignores the rest of the arguments passed to it. This is because the lambda checks the number of arguments and only allows the finite number that we define. 
             </p>
