@@ -5,6 +5,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sharmila's Dev Bootcamp Website</title>
+  
+  <link rel="stylesheet" href="../highlight/styles/rainbow.css">
+  <script src="../highlight/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
   <link href='http://fonts.googleapis.com/css?family=Libre+Baskerville:700' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Josefin+Slab:700|Roboto:300' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" type="text/css" href="../css/custom.css" >
@@ -50,7 +55,7 @@
             <p>
               Classes are objects in Ruby, this means that every class is a subset of the class Class (all classes are in encompassing class called Class). Anything you can do with an object, you can do with a class. We can create instances of any class, including built-in classes such as (String, Array, Math, etc). We can even create instance variables in our class. Since Ruby follows an object oriented model, each method within a class usually serves a singular purpose. Lets build a class together: 
             </p>
-            <pre><xml>
+            <pre><code>
               class Tree
 
                 def initialize (type, produce)
@@ -59,18 +64,18 @@
                   @dead = false
                 end
               end 
-            </xml></pre>
+            </code></pre>
             <p>
               Seen above is a class Tree with an initialize method that takes two arguments: type and produce. This method just declares several instance variables that can be used through out our Tree class. Our tree is not dead yet since we just created it, so @dead is set to false to begin with. The instance variables @type and @produce, are assigned to the arguments ‘type’ and ‘produce’. So we can initialize this class with any type of tree and decide what it’s produce is called. 
             </p>
-            <pre><xml>
+            <pre><code>
               apple_tree = Tree.new(‘apple’, ‘apple’)
               evil_tree = Tree.new(‘evil’, ‘blood goblin’)
-            </xml></pre>      
+            </code></pre>      
             <p>
               Our apple tree produces apples and our evil tree produces blood goblins. Now we can call any of the methods in our Tree class using the variables ‘apple_tree’ or ‘evil_tree’. But our class doesn’t have any methods other than our initialize method. Lets add some more functionality: 
             </p>
-            <pre><xml>
+            <pre><code>
               class Tree
 
                 def initialize (type, produce)
@@ -97,11 +102,11 @@
                 end
 
               end
-            </xml></pre>
+            </code></pre>
           <p>
             Now we can do a couple more things with our tree. Namely the ability to pick different items from our tree and increment the amount we have picked while decrementing the amount left on the tree. In our method #number_of_produce we can output the amount of items on your tree. And in the method #pick we can see some logic. If there is more than 0 produce left on our tree, the produce_picked increments by 1 and produce_left decrements by one. We output the amount of of produce we have picked. If there are no items on the tree, we output that there is no produce to pick. Lets call our brand new methods on our trees: 
           </p>
-          <pre><xml>
+          <pre><code>
             apple_tree = Tree.new(‘apple’, ‘apple’)
             apple_tree.pick # => There are no apples to pick!
             apple_tree.number_of_produce # => There are 0 apples left on your tree.
@@ -109,11 +114,11 @@
             evil_tree = Tree.new(‘evil’, ‘blood goblin’)
             evil_tree.pick # => There are no blood goblins to pick!
             evil_tree.number_of_produce # => There are 0 blood goblins left on your tree.
-          <xml></pre>
+          </code></pre>
           <p>
             You might have noticed something weird about our outputs. We don’t have any produce to pick! Oh no! This is because our @produce_left instance variable is never incremented at all. So we start with 0 and there are 0 items on our tree to pick. What we need now, is a way to account for time. If we age our tree and increase the number of items it produces we might be able to make our pick method come to life: 
           </p>
-          <pre><xml>
+          <pre><code>
           class Tree
           
             def initialize (type, produce)
@@ -175,12 +180,13 @@
               end
             end
           end
-          </xml></pre>
+          </code></pre>
 
           <p>
-            Theres a lot going on in our Tree class now. Look right above the passage_of_time method, theres a line there that says ‘private’. <xml>#private</xml> is a method in the class Class in Ruby. Everything under #private can not be accessed outside the class. If we try to access passage_of_time outside of our Tree class, the program will throw an error. There is also a lot going on in passage_of_time, we check if our tree is dead, we increment by age by 1 if its not dead, and we decide how many items are in the tree depending on its age. This method is set to private because we only want to call it inside our class every time we advance time forward. Right under our initialize method, I’ve added a method that advances time forward by one year, it’s aptly named <xml> one_year_passes </xml>. We call <xml>passage_of_time</xml> in one_year_passes and then output the age of our tree. Now, since we’ve accounted for time, and we are adding items to our tree depending on age (in passage_of_time method), we can run our method with very real effects. Lets call our brand new methods, and see our Tree class in action. 
+            Theres a lot going on in our Tree class now. Look right above the passage_of_time method, theres a line there that says ‘private’. #private is a method in the class Class in Ruby. Everything under #private can not be accessed outside the class. If we try to access passage_of_time outside of our Tree class, the program will throw an error. There is also a lot going on in passage_of_time, we check if our tree is dead, we increment by age by 1 if its not dead, and we decide how many items are in the tree depending on its age. This method is set to private because we only want to call it inside our class every time we advance time forward. Right under our initialize method, I’ve added a method that advances time forward by one year, it’s aptly named one_year_passes . We callpassage_of_time in one_year_passes and then output the age of our tree. Now, since we’ve accounted for time, and we are adding items to our tree depending on age (in passage_of_time method), we can run our method with very real effects. Lets call our brand new methods, and see our Tree class in action. 
           </p>
-          <pre><xml>
+
+          <pre><code>
           apple_tree = Tree.new('apple', 'apple')
           apple_tree.one_year_passes # => Your apple tree is: 1 years old.
           apple_tree.number_of_produce # => There are 0 apples left on your apple tree.
@@ -198,7 +204,7 @@
           evil_tree.number_of_produce # => There are 5 blood_goblins left on your evil tree.
           evil_tree.pick # => You have picked 1 blood_goblin(s).
           evil_tree.number_of_produce # => There are 4 blood_goblins left on your evil tree.
-          </xml></pre>  
+          </code></pre>  
 
           <p>
             Now we can pick things from our tree and see how many items we have picked. We can advance time forward, and our methods are all running perfectly. Success!
