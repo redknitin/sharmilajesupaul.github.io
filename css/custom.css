@@ -8,8 +8,10 @@ html, body {
 
 a {
 	font-family: 'Roboto', sans-serif;
-	text-decoration: none;
+	color: #474949;
 }
+
+a:hover {text-decoration: none;}
 
 a:visited {
 	color: gray;
@@ -30,6 +32,7 @@ a:visited {
 .jumbotron h1 {
 	padding: 20px;
 }
+
 
 .container {
 	padding-bottom: 5%;
