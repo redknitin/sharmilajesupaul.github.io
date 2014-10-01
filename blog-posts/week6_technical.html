@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Bootstrap Fixes -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sharmila's Dev Bootcamp Website</title>
+  
+  <!-- Hightlight.js -->
+  <link rel="stylesheet" href="../highlight/styles/rainbow.css">
+  <script src="../highlight/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+  <!-- Google Fonts (need to minify)--> 
+  <link href='http://fonts.googleapis.com/css?family=Libre+Baskerville:700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Josefin+Slab:700|Roboto:300' rel='stylesheet' type='text/css'>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" type="text/css" href="../css/custom.css" >
+  
+  <!-- Bootstrap -->
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+      <![endif]-->
+    </head>
+    <body>
+      <div class="wrapper">
+
+        <div class="nav">
+          <ul>
+            <div id="left">
+              <li><a href="../index.html">Home</a></li>
+              <li><a href="../blog-index.html">Blog Index</a></li>
+            </div>
+            <div  id="right">
+              <li><a href="../gps.html">GPS</a></li>
+              <li><a href="../contact-me.html">Contact Me</a></li>
+            </div>
+          </ul> 
+        </div>
+
+
+        <div class = "jumbotron"> 
+          <h1 style = "color: #616161;
+          padding-right: 10%;">Mostly Meta Learning</h1>
+          <h3 style = "color: #616161;
+          padding-right: 10%;">My journey through Dev Bootcamp and beyond.</h3>
+        </div>
+
+        <div class="container">
+          <!-- <div class="col-md-5"><img src="llama.jpg" width="350px"   height="400px" /></div> -->
+
+          <div class="col-md-12">  
+            <h3>Blocks, Procs, and Lambdas</h3>
+            <p>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Blocks, Procs, and lambdas are referred to as ‘closures’ in Computer Science. You can think of a closure is a function (or method) that can be stored as a variable. Sometimes these functions are also referred to as ‘first-class functions’. Closures can access other variables local to the scope they are created in. This means that any variable declared locally can be accessed and manipulated within the closure. Even though we are inside a defined method, we can still see the local variables outside it. Lets look at the different kind of closures that Ruby has to offer.
+            </p>
+            <br>
+            <h4><strong>Blocks: </strong></h4>
+
+            <p>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A Ruby block is just a snippet of code that can be executed. Since Ruby is an object oriented language, there is often a misconception that everything is an object… or at least most things, including all common data-types, which kind of blew my mind coming from a background in Java and C++. Blocks are an exception, meaning blocks are not objects.  Block syntax uses do..end or {} both are used interchangeably depending on readability and convenience. I like to use do..end when I have multiple lines of code within a block and {} when it is a single line of code. 
+            </p>
+            <p>Lets look at an example:</p>
+
+            <pre><code>
+            big_cats = ['tiger', 'lion', 'panther', 'leopard', 'cheetah', 'cougar', 'jaguar']
+            
+            # but a 'panther' is a kind of 'leopard'
+            # so lets get it off the list 
+            big_cats.delete_if { |x| x == 'panther'}
+            
+            p big_cats # => prints: ["tiger", "lion", "leopard", "cheetah", "cougar", "jaguar"]
+            </code></pre>
+
+            <p>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Our block (inside {}) checks whether the element of our array ‘x’ is assigned the string value ‘panther’. The delete_if method deletes the element if the block returns true. Many incredibly useful ruby methods take blocks.
+          
+              We can even create our own Ruby methods that accept blocks of code. The easiest way to do this is using the keyword ‘yield’. Lets look at an example of this: 
+            </p>
+            <pre><code class="ruby"> 
+            def cats c 
+              puts 'I like these cats:'
+              yield if block_given?
+              puts c 
+            end 
+            
+            cats(big_cats) # => prints out big_cats array
+            puts 
+            cats(big_cats) { big_cats &#60;&#60; 'lynx' } # => prints big_cats array including lynx
+            puts 
+            # but lynxes aren't all that big
+            cats(big_cats) { big_cats.delete_if { |x| x == 'lynx' } } # => removes 'lynx' from big_cats before printing big_cats
+            # the code above is a block inside another block, block-ception if you will
+            </code></pre> 
+
+            <p>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The method above takes an array ‘c’ as a parameter. The first line and last line of our method just prints out some stuff. The second line, which uses the keyword ‘yield’ is what we want to pay attention to. Notice that ‘yield’ is used in a one line conditional (an ‘if’ statement). The method #block_given? returns true if we are passing a block to yield. At this line, our program breaks out of our method and looks for a block passed to it at the method call. 
+            </p>
+            <p>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Since the first method call, ‘cats(big_cats)’, doesn’t have a block - the yield statement is skipped and our array is printed out as is. A yield statement without the ‘if’ conditional would have thrown an error stating that a block is required, but circumnavigate this adding ‘if block_given?’. Adding this conditional allows us to run this method with an option of passing it a block. 
+            </p>
+            <p>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The second method call, ‘cats(big_cats) { big_cats &#60;&#60; ‘lynx’ }’ , passes a block to our method. In this block we are adding ‘lynx’ to our big_cats array. This time when the last puts statement is executed we print out our list big_cats including ‘lynx’. The final method call undoes our addition to our array by passing out method a block containing #delete_if, inside of the block we pass to our method.
+            </p>
+            <br>
+            <h4><strong>Procs:</strong></h4>
+            <p></p>
+            <p></p>
+            <p></p>
+          <br>
+          <p><em>By Sharmila Jesupaul on September 26, 2014</em></p>
+       </div>
+      </div>
+      <div class="footer"> 
+        <p><center>Copyright © Sharmila Jesupaul 2014</center></p>
+      </div>
+    </div>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+
+  </body>
+  </html>
