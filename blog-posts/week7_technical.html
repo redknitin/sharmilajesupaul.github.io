@@ -57,8 +57,9 @@
           <!-- <div class="col-md-5"><img src="llama.jpg" width="350px"   height="400px" /></div> -->
 
           <div class="col-md-12">  
-            <h2>SQL Injections:</h2><h3>What they are and how to prevent them.</h3>
-            <center><p>"<a href="http://en.wikipedia.org/wiki/SQL_injection">SQL injection</a> is a code injection technique used to attack data-driven applications on the web."</p></center>
+            <h2>SQL Injections:</h2>
+            <br>
+            <h4><center>"<a href="http://en.wikipedia.org/wiki/SQL_injection">SQL injection</a> is a code injection technique used to attack data-driven applications on the web."</center></h4>
             <p>
               The attacker can inject a SQL command through an entry field which is then executed by the application. The injection exploits security by exposing vulnerability within the database layer of the application. Even though SQL injections are commonly used to attack websites and web applications, it can be used to attack any database system that relies on SQL. These attacks are still prevalent, especially among sites that house financial information including credit card numbers, bank account info, etc. 
             </p>
@@ -80,11 +81,11 @@
             <p>The server result would looks something like: </p>
             
             <pre><code class="sql">
-              SELECT * FROM Users WHERE UserId = 0 or 1=1
+              SELECT * FROM Users WHERE UserId = 0 or 1=1;
             </code></pre>
             <p> Which would technically return all the rows from the table Users, since WHERE 1=1 is always true. Other types of SQL injections can be made based on simple SQL syntax vulnerabilities such as batched statements separated by a semi-colon.</p>
 
-            <h4>So what can we do, as newb programmers, do to combat this issue?</h4>
+            <p>So what can we do, as newb programmers, do to combat this issue?</p>
             <p>
               SQL injection works by tricking the script into including malicious strings when it creates SQL to send to the database. So one way to combat SQL injections is by sending the actual SQL separately from the parameters, so you limit the risk of ending up with SQL code that you didn’t intend. This can be achieved through prepared statements combined with parameterized queries. These statements are parsed by the database server separately from any parameters so it becomes impossible for an attacker to inject malicious code. Using prepare allows you to have control over what kind of code is being entered in the entry field. By specifying parameters you can tell the database engine where you want to filter on. Only after the entry passes all prepared checks, you call execute to combine the prepared statements with the parameter values you specify. 
             </p>
@@ -97,7 +98,13 @@
             <p>
               The code above, takes the database information provided by theSQL fragment and checks what each parameter value is (‘?’ replaced by sanitized versions of variables) before exciting each value. You can also pass a hash to this code for the same result. 
             </p>    
-            <p><!-- Blog Body Starts Here --></p>
+            More resources: 
+            <ol>
+              <li>W3Schools: <a href="http://www.w3schools.com/sql/sql_injection.asp">SQL Injection</a></li>
+              <li>Steve Friedl's <a href="http://www.unixwiz.net/techtips/sql-injection.html">SQL Injections by Example</a></li>
+              <li>Veracode: <a href="http://www.veracode.com/security/sql-injection">SQL Injection</a></li>
+              <li>RailsGuide: <a href="http://guides.rubyonrails.org/security.html#injection">Injection</a></li>
+            </ol>
           <br>
           <p><em>By Sharmila Jesupaul on October 1, 2014</em></p>
           </div>
