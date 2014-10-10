@@ -56,7 +56,7 @@
         <div class="container">
           <!-- <div class="col-md-5"><img src="llama.jpg" width="350px"   height="400px" /></div> -->
 
-          <div class="col-md-12">  
+          <div class="col-md-10">  
             <h2>SQL Injections:</h2>
             <br>
             <h4><center>"<a href="http://en.wikipedia.org/wiki/SQL_injection">SQL injection</a> is a code injection technique used to attack data-driven applications on the web."</center></h4>
@@ -93,7 +93,7 @@
             <p>Here is an example of a prepared statement that checks SQL parameters in Ruby:</p>
             
             <pre><code class="ruby">
-            Model.where("login = ? AND password = ?", entered_user_name, entered_password).first
+              Model.where("login = ? AND password = ?", entered_user_name, entered_password).first
             </code></pre>
             <p>
               The code above, takes the database information provided by theSQL fragment and checks what each parameter value is (‘?’ replaced by sanitized versions of variables) before exciting each value. You can also pass a hash to this code for the same result. 
@@ -105,21 +105,27 @@
               <li>Veracode: <a href="http://www.veracode.com/security/sql-injection">SQL Injection</a></li>
               <li>RailsGuide: <a href="http://guides.rubyonrails.org/security.html#injection">Injection</a></li>
             </ol>
-          <br>
-          <p><em>By Sharmila Jesupaul on October 1, 2014</em></p>
+            <br>
+            <p><em>By Sharmila Jesupaul on October 1, 2014</em></p>
           </div>
-        </div>
+          <div class="col-md-2"> 
+            <span style="display:block; padding-left:50%; padding-top: 10%"><a href="http://www.twitter.com/ChaosCatter"><img src="../imgs/Twitter-icon.png"/> </a>
+              <a href="http://www.facebook.com/mysticmania"><img src="../imgs/Facebook-icon.png"></a>
+              <a href="https://www.linkedin.com/pub/sharmila-jesupaul/75/22/9b2"><img src="../imgs/Linkedin-icon.png"></a>
+              <a href="http://sharmilasaurus.tumblr.com"><img src="../imgs/Tumblr-icon.png"></a> </span>
+            </div>
+          </div>
 
-        <div class="footer"> 
-          <p><center>Copyright © Sharmila Jesupaul 2014</center></p>
-        </div>
-    </div>
+          <div class="footer"> 
+            <p><center>Copyright © Sharmila Jesupaul 2014</center></p>
+          </div>
 
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
 
-  </body>
-  </html>
+          <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+          <!-- Include all compiled plugins (below), or include individual files as needed -->
+          <script src="js/bootstrap.min.js"></script>
+
+        </body>
+        </html>

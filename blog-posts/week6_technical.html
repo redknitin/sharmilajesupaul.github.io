@@ -55,164 +55,172 @@
 
         <div class="container">
           <!-- <div class="col-md-5"><img src="llama.jpg" width="350px"   height="400px" /></div> -->
-
-          <div class="col-md-12">  
-            <h2>Blocks, Procs, and Lambdas</h2>
-            <p>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Blocks, Procs, and lambdas are referred to as ‘closures’ in Computer Science. You can think of a closure is a function (or method) that can be stored as a variable. Sometimes these functions are also referred to as ‘first-class functions’. Closures can access other variables local to the scope they are created in. This means that any variable declared locally can be accessed and manipulated within the closure. Even though we are inside a defined method, we can still see the local variables outside it. Lets look at the different kind of closures that Ruby has to offer.
-            </p>
-            <h3><strong>Blocks: </strong></h3>
-
-            <p>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A Ruby block is just a snippet of code that can be executed. Since Ruby is an object oriented language, there is often a misconception that everything is an object… or at least most things, including all common data-types, which kind of blew my mind coming from a background in Java and C++. Blocks are an exception, meaning blocks are not objects.  Block syntax uses do..end or {} both are used interchangeably depending on readability and convenience. I like to use do..end when I have multiple lines of code within a block and {} when it is a single line of code. 
-            </p>
-            <p>Lets look at an example:</p>
-
-            <pre><code>
-            big_cats = ['tiger', 'lion', 'panther', 'leopard', 'cheetah', 'cougar', 'jaguar']
-            
-            # but a 'panther' is a kind of 'leopard'
-            # so lets get it off the list 
-            big_cats.delete_if { |x| x == 'panther'}
-            
-            p big_cats # => prints: ["tiger", "lion", "leopard", "cheetah", "cougar", "jaguar"]
-            </code></pre>
-
-            <p>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Our block (inside {}) checks whether the element of our array ‘x’ is assigned the string value ‘panther’. The delete_if method deletes the element if the block returns true. Many incredibly useful ruby methods take blocks.
           
-              We can even create our own Ruby methods that accept blocks of code. The easiest way to do this is using the keyword ‘yield’. Lets look at an example of this: 
-            </p>
-            <pre><code class="ruby"> 
-            def cats c 
-              puts 'I like these cats:'
-              yield if block_given?
-              puts c 
-            end 
-            
-            cats(big_cats) # => prints out big_cats array
-            puts 
-            cats(big_cats) { big_cats &#60;&#60; 'lynx' } # => prints big_cats array including lynx
-            puts 
-            # but lynxes aren't all that big
-            cats(big_cats) { big_cats.delete_if { |x| x == 'lynx' } } # => removes 'lynx' from big_cats before printing big_cats
-            # the code above is a block inside another block, block-ception if you will
-            </code></pre> 
+            <div class="col-md-10">  
+              <h2>Blocks, Procs, and Lambdas</h2>
+              <p>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Blocks, Procs, and lambdas are referred to as ‘closures’ in Computer Science. You can think of a closure is a function (or method) that can be stored as a variable. Sometimes these functions are also referred to as ‘first-class functions’. Closures can access other variables local to the scope they are created in. This means that any variable declared locally can be accessed and manipulated within the closure. Even though we are inside a defined method, we can still see the local variables outside it. Lets look at the different kind of closures that Ruby has to offer.
+              </p>
+              <h3><strong>Blocks: </strong></h3>
 
-            <p>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The method above takes an array ‘c’ as a parameter. The first line and last line of our method just prints out some stuff. The second line, which uses the keyword ‘yield’ is what we want to pay attention to. Notice that ‘yield’ is used in a one line conditional (an ‘if’ statement). The method #block_given? returns true if we are passing a block to yield. At this line, our program breaks out of our method and looks for a block passed to it at the method call. 
-            </p>
-            <p>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Since the first method call, ‘cats(big_cats)’, doesn’t have a block - the yield statement is skipped and our array is printed out as is. A yield statement without the ‘if’ conditional would have thrown an error stating that a block is required, but we circumnavigate this error by adding ‘if block_given?’. Adding this conditional allows us to run this method with an option of passing it a block. 
-            </p>
-            <p>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The second method call, ‘cats(big_cats) { big_cats &#60;&#60; ‘lynx’ }’ , passes a block to our method. In this block we are adding ‘lynx’ to our big_cats array. This time when the last puts statement is executed we print out our list big_cats including ‘lynx’. The final method call undoes our addition to our array by passing out method a block containing #delete_if, inside of the block we pass to our method.
-            </p>
-            <br>
-            <h3><strong>Procs:</strong></h3>
-            <p>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Proc is short for procedure, they are similar to blocks in the way that they also hold a procedural set of code. In Ruby, Procs differ from blocks in two ways: Procs are objects and they have names. Defining a proc is easy, we just call Proc.new and give it the block of code we want to save. Here’s a small proc that takes all the values of a data structure and squares them: 
-            </p>
-            <pre><code class="ruby">
-              ints = [ -10, -4, 0, 2, 5, 6, 7, 12, 98322432]
-              
-              # ** is the exponential operator in Ruby.
-              square = Proc.new {|x| x**2}
-              
-              # using our brand new proc as the body of a map method
-              # since the #map method expects a block we use &#38; to turn our proc into a block
-              squared_ints = ints.map(&#38;square)
-              
-              p squared_ints # => prints:[100, 16, 0, 4, 25, 36, 49, 144, 9667300634394624]]
+              <p>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A Ruby block is just a snippet of code that can be executed. Since Ruby is an object oriented language, there is often a misconception that everything is an object… or at least most things, including all common data-types, which kind of blew my mind coming from a background in Java and C++. Blocks are an exception, meaning blocks are not objects.  Block syntax uses do..end or {} both are used interchangeably depending on readability and convenience. I like to use do..end when I have multiple lines of code within a block and {} when it is a single line of code. 
+              </p>
+              <p>Lets look at an example:</p>
 
-              p square.call(10) # => prints: 100
-            </code></pre>
+              <pre><code>
+                big_cats = ['tiger', 'lion', 'panther', 'leopard', 'cheetah', 'cougar', 'jaguar']
 
-            <p>
+                # but a 'panther' is a kind of 'leopard'
+                # so lets get it off the list 
+                big_cats.delete_if { |x| x == 'panther'}
+
+                p big_cats # => prints: ["tiger", "lion", "leopard", "cheetah", "cougar", "jaguar"]
+              </code></pre>
+
+              <p>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Our block (inside {}) checks whether the element of our array ‘x’ is assigned the string value ‘panther’. The delete_if method deletes the element if the block returns true. Many incredibly useful ruby methods take blocks.
+
+                We can even create our own Ruby methods that accept blocks of code. The easiest way to do this is using the keyword ‘yield’. Lets look at an example of this: 
+              </p>
+              <pre><code class="ruby"> 
+                def cats c 
+                puts 'I like these cats:'
+                yield if block_given?
+                puts c 
+                end 
+
+                cats(big_cats) # => prints out big_cats array
+                puts 
+                cats(big_cats) { big_cats &#60;&#60; 'lynx' } # => prints big_cats array including lynx
+                puts 
+                # but lynxes aren't all that big
+                cats(big_cats) { big_cats.delete_if { |x| x == 'lynx' } } # => removes 'lynx' from big_cats before printing big_cats
+                # the code above is a block inside another block, block-ception if you will
+              </code></pre> 
+
+              <p>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The method above takes an array ‘c’ as a parameter. The first line and last line of our method just prints out some stuff. The second line, which uses the keyword ‘yield’ is what we want to pay attention to. Notice that ‘yield’ is used in a one line conditional (an ‘if’ statement). The method #block_given? returns true if we are passing a block to yield. At this line, our program breaks out of our method and looks for a block passed to it at the method call. 
+              </p>
+              <p>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Since the first method call, ‘cats(big_cats)’, doesn’t have a block - the yield statement is skipped and our array is printed out as is. A yield statement without the ‘if’ conditional would have thrown an error stating that a block is required, but we circumnavigate this error by adding ‘if block_given?’. Adding this conditional allows us to run this method with an option of passing it a block. 
+              </p>
+              <p>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The second method call, ‘cats(big_cats) { big_cats &#60;&#60; ‘lynx’ }’ , passes a block to our method. In this block we are adding ‘lynx’ to our big_cats array. This time when the last puts statement is executed we print out our list big_cats including ‘lynx’. The final method call undoes our addition to our array by passing out method a block containing #delete_if, inside of the block we pass to our method.
+              </p>
+              <br>
+              <h3><strong>Procs:</strong></h3>
+              <p>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Proc is short for procedure, they are similar to blocks in the way that they also hold a procedural set of code. In Ruby, Procs differ from blocks in two ways: Procs are objects and they have names. Defining a proc is easy, we just call Proc.new and give it the block of code we want to save. Here’s a small proc that takes all the values of a data structure and squares them: 
+              </p>
+              <pre><code class="ruby">
+                ints = [ -10, -4, 0, 2, 5, 6, 7, 12, 98322432]
+
+                # ** is the exponential operator in Ruby.
+                square = Proc.new {|x| x**2}
+
+                # using our brand new proc as the body of a map method
+                # since the #map method expects a block we use &#38; to turn our proc into a block
+                squared_ints = ints.map(&#38;square)
+
+                p squared_ints # => prints:[100, 16, 0, 4, 25, 36, 49, 144, 9667300634394624]]
+
+                p square.call(10) # => prints: 100
+              </code></pre>
+
+              <p>
                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The proc is assigned to a variable name ‘square’ and is executable throughout our local scope. This means we don’t have to repeat the block multiple times every time we want to square values of a data structure. The #map takes the block we pass to it and acts on every element of our array. However, #map only accepts a block so we use ‘&#38;’ to convert our proc into a block. We can also call our proc using the #call method. We pass it an argument which it evaluates for the element ‘x’. In the last line of the example above, we call our proc and pass it the integer 10, it squares the integer and returns 100. </p>
-            
-            <p>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Procs are objects which means that whatever we can do with an object, we can do with a proc. They can be created during runtime, stored in data structures, assigned to a variable, passed as arguments to other functions and returned as the value of other functions. Procs eliminate the need to repeat a block of code in several areas, thus helping your code remain DRY. 
-            </p>
-            <br>
-            <h3><strong>Lambdas:</strong></h3>
-            <p>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Before I begin explaining Lambdas, its important to note that a lambda is a Proc object. Lambas look very similar to procs and they also act similarly. When you declare a new lambda you use the keyword ‘lambda’ followed by the block of code. We can assign a lambda to a variable and even use it almost exactly like a proc. So what are the main differences? Lambdas check the number of arguments passed to them but procs do not. Lets look at an example of this: 
-            </p>
-            <pre><code class="ruby">
-            lam_square = lambda {|x| x**2}
-            proc_square = Proc.new {|x| x**2}
-            
-            p lam_square.call(10) # => prints ‘100'
-            p proc_square.call(10) # => prints ‘100’
-            
-            p lam_square.call(10,20,30,40) # => error: wrong number of arguments (4 for 1)
-            p proc_square.call(10,20,30,40) # => prints '100'
-            </code></pre>
-            <p>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In the example above, I have a created a lambda and a proc that store the same block of code. They take a value and return its square.  When we call our lambda on the number 10, it returns the square of 10, which is 100. Same goes for our proc. But look what happens when we give our lambda more than one argument. Since it only expects one argument ‘x’ it throws an error that explicitly says “wrong number of arguments (4 for 1)”. But proc_square just prints 100 and ignores the rest of the arguments passed to it. This is because the lambda checks the number of arguments and only allows the finite number that we define. 
-            </p>
-            <p>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;There is another big difference between how procs and lambdas handle return statements. When a lambda is passed a return statement, it returns that value and triggers the rest of the code within the method. But when a proc is passed a return statement it returns the value, and triggers the code outside of the method where the proc is being executed.
-            </p>
-            <pre><code class="ruby">
-            # lets go back to our big cats 
-            big_cats = ['tiger', 'lion', 'panther', 'leopard', 'cheetah', 'cougar', 'jaguar']
-            def cats c 
-              lam = lambda { return c }
-              lam.call
-              puts 'I like these cats:'
-              puts c
-            end 
-            
-            cats(big_cats) # => prints out 'I like these cats:' followed by big_cats list
-            </code></pre>  
 
-            <p>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I threw a lambda into our cats method. When we execute our method, it prints out the expected out put. This is because the lambda triggers the rest of the method. Lets look at this example with a proc instead of a lambda:  
-            </p>
-            <pre><code class="ruby">
-            big_cats = ['tiger', 'lion', 'panther', 'leopard', 'cheetah', 'cougar', 'jaguar']
-            
-            def cats c 
-              proc = Proc.new { return c }
-              proc.call
-              puts 'I like these cats:'
-              puts c
-            end 
-            
-            cats(big_cats) # => prints nothing 
-            </code></pre>  
+               <p>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Procs are objects which means that whatever we can do with an object, we can do with a proc. They can be created during runtime, stored in data structures, assigned to a variable, passed as arguments to other functions and returned as the value of other functions. Procs eliminate the need to repeat a block of code in several areas, thus helping your code remain DRY. 
+              </p>
+              <br>
+              <h3><strong>Lambdas:</strong></h3>
+              <p>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Before I begin explaining Lambdas, its important to note that a lambda is a Proc object. Lambas look very similar to procs and they also act similarly. When you declare a new lambda you use the keyword ‘lambda’ followed by the block of code. We can assign a lambda to a variable and even use it almost exactly like a proc. So what are the main differences? Lambdas check the number of arguments passed to them but procs do not. Lets look at an example of this: 
+              </p>
+              <pre><code class="ruby">
+                lam_square = lambda {|x| x**2}
+                proc_square = Proc.new {|x| x**2}
 
-            <p>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The proc forgets about the rest of the code in the method as soon as its called. It breaks out of the method as soon as it executes the return statement and continues running outside the method. 
-            </p>
-            <p>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Procs and lambdas both contain blocks. Lambdas and Procs are both considered to be Proc objects in Ruby and there are several subtle differences between them. Procs are flexible when it comes to number of arguments, whereas lambdas are not. Blocks don't require all their arguments to be provided but methods do (unless a default is provided). In this way, a proc behaves like a block of code while a lambda behaves like a method.
-            </p>
-            <p> More Resources:</p>
-            <ol>
-              <li>Codecademy: <a href="http://www.codecademy.com/courses/ruby-beginner-en-L3ZCI/0/1"> Blocks, Procs, &#38; Lambdas</a></li>
-              <li>StackOverflow: <a href="http://stackoverflow.com/questions/626/when-to-use-lambda-when-to-use-proc-new">When to use lambda and when to use Proc.new?</a></li>
-              <li>CodeHale: <a href="http://blog.codahale.com/2005/11/24/a-ruby-howto-writing-a-method-that-uses-code-blocks/">How to write a method that uses code blocks?</a></li>
-              <li>Eli Bendersky's website: <a href="http://eli.thegreenplace.net/2006/04/18/understanding-ruby-blocks-procs-and-methods/"> Understanding Ruby Blocks, Procs, and Methods</a></li>
+                p lam_square.call(10) # => prints ‘100'
+                p proc_square.call(10) # => prints ‘100’
 
-            </ol>
-            <p></p>
-          <br>
-          <p><em>By Sharmila Jesupaul on October 1, 2014</em></p>
-       </div>
-      </div>
-      <div class="footer"> 
-        <p><center>Copyright © Sharmila Jesupaul 2014</center></p>
-      </div>
-    </div>
+                p lam_square.call(10,20,30,40) # => error: wrong number of arguments (4 for 1)
+                p proc_square.call(10,20,30,40) # => prints '100'
+              </code></pre>
+              <p>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In the example above, I have a created a lambda and a proc that store the same block of code. They take a value and return its square.  When we call our lambda on the number 10, it returns the square of 10, which is 100. Same goes for our proc. But look what happens when we give our lambda more than one argument. Since it only expects one argument ‘x’ it throws an error that explicitly says “wrong number of arguments (4 for 1)”. But proc_square just prints 100 and ignores the rest of the arguments passed to it. This is because the lambda checks the number of arguments and only allows the finite number that we define. 
+              </p>
+              <p>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;There is another big difference between how procs and lambdas handle return statements. When a lambda is passed a return statement, it returns that value and triggers the rest of the code within the method. But when a proc is passed a return statement it returns the value, and triggers the code outside of the method where the proc is being executed.
+              </p>
+              <pre><code class="ruby">
+                # lets go back to our big cats 
+                big_cats = ['tiger', 'lion', 'panther', 'leopard', 'cheetah', 'cougar', 'jaguar']
+                def cats c 
+                lam = lambda { return c }
+                lam.call
+                puts 'I like these cats:'
+                puts c
+                end 
+
+                cats(big_cats) # => prints out 'I like these cats:' followed by big_cats list
+              </code></pre>  
+
+              <p>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I threw a lambda into our cats method. When we execute our method, it prints out the expected out put. This is because the lambda triggers the rest of the method. Lets look at this example with a proc instead of a lambda:  
+              </p>
+              <pre><code class="ruby">
+                big_cats = ['tiger', 'lion', 'panther', 'leopard', 'cheetah', 'cougar', 'jaguar']
+
+                def cats c 
+                proc = Proc.new { return c }
+                proc.call
+                puts 'I like these cats:'
+                puts c
+                end 
+
+                cats(big_cats) # => prints nothing 
+              </code></pre>  
+
+              <p>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The proc forgets about the rest of the code in the method as soon as its called. It breaks out of the method as soon as it executes the return statement and continues running outside the method. 
+              </p>
+              <p>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Procs and lambdas both contain blocks. Lambdas and Procs are both considered to be Proc objects in Ruby and there are several subtle differences between them. Procs are flexible when it comes to number of arguments, whereas lambdas are not. Blocks don't require all their arguments to be provided but methods do (unless a default is provided). In this way, a proc behaves like a block of code while a lambda behaves like a method.
+              </p>
+              <p> More Resources:</p>
+              <ol>
+                <li>Codecademy: <a href="http://www.codecademy.com/courses/ruby-beginner-en-L3ZCI/0/1"> Blocks, Procs, &#38; Lambdas</a></li>
+                <li>StackOverflow: <a href="http://stackoverflow.com/questions/626/when-to-use-lambda-when-to-use-proc-new">When to use lambda and when to use Proc.new?</a></li>
+                <li>CodeHale: <a href="http://blog.codahale.com/2005/11/24/a-ruby-howto-writing-a-method-that-uses-code-blocks/">How to write a method that uses code blocks?</a></li>
+                <li>Eli Bendersky's website: <a href="http://eli.thegreenplace.net/2006/04/18/understanding-ruby-blocks-procs-and-methods/"> Understanding Ruby Blocks, Procs, and Methods</a></li>
+
+              </ol>
+              <p></p>
+              <br>
+              <p><em>By Sharmila Jesupaul on October 1, 2014</em></p>
+            </div>
+
+            <div class="col-md-2"> 
+            <span style="display:block; padding-left:50%; padding-top: 10%"><a href="http://www.twitter.com/ChaosCatter"><img src="../imgs/Twitter-icon.png"/> </a>
+              <a href="http://www.facebook.com/mysticmania"><img src="../imgs/Facebook-icon.png"></a>
+              <a href="https://www.linkedin.com/pub/sharmila-jesupaul/75/22/9b2"><img src="../imgs/Linkedin-icon.png"></a>
+              <a href="http://sharmilasaurus.tumblr.com"><img src="../imgs/Tumblr-icon.png"></a> </span>
+            </div>
+          </div>
+
+          <div class="footer"> 
+            <p><center>Copyright © Sharmila Jesupaul 2014</center></p>
+          </div>
+        </div>
 
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="js/bootstrap.min.js"></script>
 
-  </body>
-  </html>
+      </body>
+      </html>

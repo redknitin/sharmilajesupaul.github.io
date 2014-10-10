@@ -50,6 +50,11 @@ textarea {
 	font-size: 15px;
 }
 
+.col-md-10 {
+	font-family: 'Roboto', sans-serif;
+	font-size: 15px;
+}
+
 .col-md-12 ul {
 	list-style: none;
 }
